@@ -1,0 +1,21 @@
+{
+  "encyclopedia": "slategray",
+  "philosophy": "darkcyan",
+  "Christianity": "mediumslateblue",
+  "religion": "plum",
+  "social science": "darkgoldenrod",
+  "Greek": "saddlebrown",
+  "mathematics": "darkslategray",
+  "physical science": "seagreen",
+  "life science": "mediumaquamarine",
+  "medicine": "olivedrab",
+  "agriculture": "limegreen",
+  "printmaking": "chocolate",
+  "art": "burlywood",
+  "English literature": "royalblue",
+  "French literature": "cornflowerblue",
+  "literature": "lightsteelblue",
+  "geography": "mediumvioletred",
+  "history": "magenta",
+  "atlas": "palevioletred"
+}

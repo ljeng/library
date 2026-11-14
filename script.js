@@ -1,6 +1,7 @@
-const [BOOKS, GRAPH] = await Promise.all([
-  fetch('data/books.json').then(response => response.json()),
-  fetch('data/graph.json').then(response => response.json())
+const [BOOKS, GRAPH, COLORS] = await Promise.all([
+  fetch('data/duplicate-frequent.json').then(response => response.json()),
+  fetch('data/graph.json').then(response => response.json()),
+  fetch('data/colors.json').then(response => response.json())
 ]);
 
 const canvas = document.getElementById('canvas');
@@ -58,6 +59,12 @@ for (const [i, [source, target, weight]] of graph.entries()) {
     edges.push({source, target, weight: 1 - weight});
   }
 }
+for (const cl of Object.keys(COLORS)) if (count[cl])
+  legend.insertAdjacentHTML('beforeend',
+    `<button class="lg" type="button" data-c="${cl}"`
+    + ' aria-pressed="false">'
+    + `<span class="sw" style="background:${COLORS[cl]}"></span>`
+    + `<span>${cl}</span><span class="ct">${count[cl]}</span></button>`);
 let c = null;
 legend.addEventListener('click', event => {
   const closest = event.target.closest('.lg');
@@ -111,6 +118,7 @@ function requestDraw() {
       context.stroke();
       for (const node of nodes) {
         context.globalAlpha = c === null || node.class === c ? 1 : 0.13;
+        context.fillStyle = COLORS[node.class];
         context.beginPath();
         let grown = 1;
         if (node === dragSubject) grown = 1.22;
